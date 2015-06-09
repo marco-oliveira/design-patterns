@@ -1,9 +1,17 @@
-package templatemethod;
+package decorator;
 
-import strategy.imposto.Imposto;
 import strategy.imposto.Orcamento;
 
-public abstract class TemplateImpostoCondicional implements Imposto {
+//classe copiada para fins didaticos
+public abstract class TemplateImpostoCondicional extends Imposto {
+
+	public TemplateImpostoCondicional(Imposto outroImposto) {
+		super(outroImposto);
+	}
+	
+	public TemplateImpostoCondicional() {
+		super();
+	}
 
 	@Override
 	public final double calcula(Orcamento orcamento) {
