@@ -2,19 +2,22 @@ package strategy.investimento;
 
 import java.util.Calendar;
 
+import state.EstadoDaConta;
+import state.EstadoPositivo;
+
 
 public class Conta {
 	
-	
-	private double saldo;
+	//esta public para fins didaticos
+	public double saldo;
+	public EstadoDaConta estado;
 	private String nome;
 	private int numero;
 	private String agencia;
 	private Calendar dataAbertura;
-	private int cont = 0;
 	public Conta(double saldo){
 		this.saldo = saldo;
-		cont++;
+		estado = new EstadoPositivo();
 	}
 	
 	
@@ -26,15 +29,18 @@ public class Conta {
 		this.agencia = agencia;
 	}
 
-
+	public void saca(double valor){
+		estado.saca(this, valor);
+	}
+	
+	public void deposita(double valor){
+		estado.deposita(this, valor);
+	}
 
 	public double getSaldo() {
 		return saldo;
 	}
 	
-	public void deposita(double saldo){
-		this.saldo += saldo;
-	}
 
 	public String getNome() {
 		// TODO Auto-generated method stub
@@ -63,10 +69,4 @@ public class Conta {
 		c.set(ano, mes, dia);
 		this.dataAbertura = c;
 	}
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return "conta" + cont;
-	}
-	
 }
