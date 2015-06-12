@@ -13,5 +13,6 @@ public class TestaNotaFiscal {
 		.comObservacao("nfe tal e tal")
 		.constroi();
 		System.out.println(nf);
+		
 	}
 }
